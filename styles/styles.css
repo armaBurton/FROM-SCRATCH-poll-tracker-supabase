@@ -1,0 +1,238 @@
+* {
+    /* feel free to update these css variables for a quick theme */
+    
+    --teal: hsl(186, 34%, 41%);
+    --mint: hsl(180, 43%, 74%);
+    --sand: hsl(45, 51%, 69%);
+    --ginger: hsl(33, 41%, 57%);
+    --brick: hsl(11, 96%, 43%);
+    
+    /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
+        
+    /* --color1: hsla(349, 69%, 76%, 1);
+    --color2: hsla(207, 67%, 44%, 1);
+    --color3: hsla(200, 61%, 56%, 1);
+    --color4: hsla(187, 41%, 94%, 1);
+    --color5: hsla(170, 28%, 95%, 1); */
+
+    /* --color1: hsla(45, 86%, 83%, 1);
+    --color2: hsla(135, 65%, 98%, 1);
+    --color3: hsla(315, 37%, 86%, 1);
+    --color4: hsla(45, 73%, 98%, 1);
+    --color5: hsla(224, 40%, 79%, 1); */
+    
+    --header-height: 80px;
+    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
+    --footer-shadow: 0px 0px 20px 1px rgba(0,0,0,0.45);
+    --gutter: 30px;
+    --footer-height: 25px;
+    
+    margin: 0;
+    padding: 0;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+body{
+    background-color: var(--sand);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: calc(var(--footer-height));
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--ginger);
+    height: var(--header-height);
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--brick);
+}
+
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.gutter-right {
+    margin-right: 20px;
+}
+
+header img {
+    height: var(--header-height);
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: var(--footer-height);
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--ginger);
+    box-shadow: var(--footer-shadow);
+    font-family: 'Titillium Web', sans-serif;
+    border-top: 1px solid var(--brick);
+}
+
+#current-poll-wrapper{
+    width: 834px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--mint);
+}
+
+.init-form{
+    background-color: var(--ginger);
+    padding: 20px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left: 1px solid var(--brick);
+    border-top: 1px solid var(--brick);
+    border-bottom: 1px solid var(--brick);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--mint);
+}
+
+label{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+label:last-child{
+    margin-bottom: 0;
+}
+
+input{
+    border-radius: 3px;
+    border: 1px solid var(--brick);
+}
+
+#query, #r-a, #r-b{
+    margin-left: 10px;
+    width: 230px;
+}
+
+#generate-poll, #close-poll{
+    width: 100%;
+    cursor: pointer;
+}
+
+#generate-poll{
+    margin-bottom: 10px; 
+}
+
+#close-poll{
+    margin-top: 10px;
+}
+
+.reply-form{
+    padding: 20px;
+    padding-left: 10px;
+    background-color: var(--ginger);
+    border-left: 1px solid var(--mint);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 1px solid var(--brick);
+    border-top: 1px solid var(--brick);
+    border-bottom: 1px solid var(--brick);
+}
+
+#query-holder{
+    display: flex;
+    margin-top: 10px;
+}
+
+#query-b{
+    margin-left: 20px;
+}
+
+#query-a, #query-b{
+    width: 200px;
+}
+
+#current-query, #cq-a, #cq-b, #count-a, #count-b{
+    background-color: var(--sand);
+    padding: 3px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--brick);
+}
+
+#cq-a, #cq-b{
+    width: 100%;
+    margin-right: 10px;
+}
+
+#count-a, #count-b{
+    text-align: right;
+}
+
+#response-a, #response-b{
+    display: flex;
+    justify-content: space-between;
+}
+
+h3{
+    font-size: 1rem;
+}
+
+#q-a-vote-holder, #q-b-vote-holder{
+    margin-top: 5px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#up-a, #down-a, #up-b, #down-b{
+    width: 95px;
+    cursor: pointer;
+}
+
+#past-poll-wrapper{
+    width: 834px;
+    padding-top: 10px;
+}
+
+#divA, #divB{
+    display:flex;
+}
+
+#VA, #VB{
+    margin-left: 10px;
+}
+
+#pollDiv{
+    border: 1px solid var(--brick);
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#pollDiv:first-child{
+    margin-top: 0;
+}
+
+#pastQ{
+    text-decoration: underline;
+}
