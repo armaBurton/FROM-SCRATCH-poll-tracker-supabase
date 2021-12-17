@@ -1,6 +1,6 @@
 // import functions and grab DOM elements
-import { renderPast } from './render-utils.js';
-import { uploadPoll, getPolls, checkAuth, logOut, makePollObj } from '../../script/fetch-utils.js';
+import { renderPoll } from './render-utils.js';
+import { getPolls, checkAuth, logOut, makePollObj, uploadPoll } from '../../script/fetch-utils.js';
 //grab incremental buttons
 const upAButton = document.querySelector(`#up-a`);
 const downAButton = document.querySelector(`#down-a`);
@@ -78,55 +78,34 @@ form.addEventListener(`submit`, (e) => {
     answerA = data.get(`response-a`);
     answerB = data.get(`response-b`);
 
-    displayCurrentPoll();
+    displayCurrentPollEl();
     resetForm();
 });
 
 closePollButton.addEventListener(`click`, async(e) => {
     e.preventDefault();
-    const pollObj = makePollObj();
-    console.log(pollObj.userID);
-    const userID = pollObj.userID;
-    const pushPoll = await uploadPoll(pollObj);
-    console.log(pushPoll);
+    const pollObj = makePollObj(query, answerA, answerB, voteCountA, voteCountB);
+    uploadPoll(pollObj);
+    console.log(pollObj);
 
-    // pastPollsArr.push(pollObj);
-
-    resetPoll();
-    displayCurrentPoll();
+    setTimeout(resetPoll(), 500);
+    
+    displayCurrentPollEl();
     const getPastPolls = await getPolls();
   
     if (getPastPolls){
-        displayAllPolls(getPastPolls, userID);
+        displayAllPolls(getPastPolls);
     }
     // displayAllPolls();
 });
 
-function displayCurrentPoll(){
+function displayCurrentPollEl(){
     currentQuery.textContent = query;
     currentResponseA.textContent = answerA;
     currentResponseB.textContent = answerB;
     countA.textContent = voteCountA;
     countB.textContent = voteCountB;
 }
-
-// const SUPABASE_KEY = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTUxMDExOCwiZXhwIjoxOTU1MDg2MTE4fQ.n_1ON3spG8iTfcVhhr5SVF_YVwK9zTLL2ChEvI1BSmY`;
-
-// const SUPABASE_URL = `https://fyyidslbegjzyojgpivl.supabase.co`;
-
-// const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-
-// function makePollObj(query, answerA, answerB, voteCountA, voteCountB){
-//     return {
-//         query,
-//         answerA,
-//         answerB,
-//         voteCountA,
-//         voteCountB,
-//         userID: client.auth.user().id
-//     };
-// }
 
 function resetPoll(){
     query = 'No current poll';
@@ -136,14 +115,11 @@ function resetPoll(){
     answerB = '';
 }
 
-function displayAllPolls(getPastPolls, userID){
+function displayAllPolls(getPastPolls){
     pastPolls.textContent = '';
-    console.log(userID);
     for (let poll of getPastPolls){
-        // if (poll.userID === userID){
-            const holder = renderPast(poll);
-            pastPolls.prepend(holder);
-        // }
+        const holder = renderPoll(poll);
+        pastPolls.prepend(holder);
     }
 }
 

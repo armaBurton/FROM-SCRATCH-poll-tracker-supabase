@@ -49,7 +49,7 @@ export async function uploadPoll(pollObj){
             },
         ]);
 
-        return response.data;
+    return response.data;
 }
 
 export async function getPolls(){

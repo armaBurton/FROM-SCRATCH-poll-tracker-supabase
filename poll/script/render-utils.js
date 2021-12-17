@@ -1,4 +1,4 @@
-export function renderPast(poll){
+export function renderPoll(poll){
     const pollDiv = document.createElement(`div`);
     pollDiv.id = `pollDiv`;
     const pastQ = document.createElement(`h3`);
