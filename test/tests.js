@@ -1,6 +1,6 @@
 import './example.test.js';
 import { renderPoll } from '../poll/script/render-utils.js';
-import { getPolls } from '../script/fetch-utils.js';
+import { getPolls, uploadPoll } from '../script/fetch-utils.js';
 
 const test = QUnit.test;
 
@@ -26,7 +26,7 @@ test('testing renderPoll()', (expect) => {
     expect.equal(actual.outerHTML, expected);
 });
 
-test('testing createPoll()', async(expect) => {
+test('testing uploadPoll()', async(expect) => {
     // expect.preventDefault();
     //Arrange
     // Set up your arguments and expectations
@@ -35,7 +35,7 @@ test('testing createPoll()', async(expect) => {
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = typeof getPolls();
+    const actual = typeof uploadPoll();
 
     //Expect
     // Make assertions about what is expected versus the actual result
